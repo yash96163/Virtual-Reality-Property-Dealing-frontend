@@ -1,0 +1,293 @@
+<!-- nav start from here  -->
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+   brand name and logo
+  <a class="navbar-brand" routerLink="/">
+    <img
+      src="../../assets/images/Logo.png"
+      class="d-inline-block align-top landing-logo-size"
+      alt=""
+    />
+    <span class="landing-logo-name">Hash Homes</span>
+  </a>
+
+   button to toggle when in mobile screen view
+  <button
+    class="toggle-button"
+    (click)="headerOpen = !headerOpen"
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+     <span class="navbar-toggler-icon"></span>
+    <span
+      ><img
+        src="../../assets/icons/hamburger.svg"
+        class="toggle-button-hamburger"
+    /></span>
+  </button>
+
+   menu items
+  <div
+    class="collapse navbar-collapse"
+    id="navbarText"
+    [ngClass]="{ show: headerOpen }"
+  >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Help</a>
+      </li>
+    </ul>
+     login button
+    <button
+      type="button"
+      class="login-button btn btn-danger mr-2"
+      routerLink="/log-in"
+      *ngIf="!authService.loggedIn"
+    >
+      Log in
+    </button>
+     sign up button
+    <button
+      type="button"
+      class="signup-button btn btn-outline-danger"
+      routerLink="/signup"
+      *ngIf="!authService.loggedIn"
+    >
+      Sign up
+    </button>
+     logout button
+    <button
+      type="button"
+      class="logout-button btn btn-danger mr-2"
+      *ngIf="authService.loggedIn"
+      (click)="authService.logout()"
+    >
+      Log out
+    </button>
+
+     <button
+      type="button"
+      class="btn btn-link mr-2"
+      (click)="uxService.toggleDarkMode()"
+      style="b
+    >
+    <img [src]="getSrc()" (click)="uxService.toggleDarkMode()" class="ml-2" />
+  </div>
+</nav>
+ nav bar ends here  -->
+
+<!-- header start from here containing search bar
+<header [ngStyle]="{ 'background-image': 'url(' + getImage() + ')' }">
+   search bar container
+  <div class="searchbar-container row m-0">
+     search bar
+    <div
+      class="searchbar col-12 col-lg-10 offset-lg-1"
+      style="
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
+          0 12px 40px 0 rgba(0, 0, 0, 0.19);
+      "
+    >
+       form to handle form operations
+      <form class="row" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+         text field for city name
+        <div class="col-5 col-md-4 form-input-holder">
+          <img src="../../assets/icons/location-icon.svg" />
+          <input
+            type="text"
+            list="states"
+            formControlName="state"
+            (input)="searchState($event)"
+            class="city-input round"
+            placeholder="States"
+          />
+          <datalist id="states">
+            <option *ngFor="let state of stateResult" [value]="state"></option>
+          </datalist>
+        </div>
+
+        <div class="col-5 col-md-3 form-input-holder">
+           <input type="text" class="city-input" placeholder="State" formControlName = "state">
+          <img src="../../assets/icons/location-icon.svg" />
+          <input
+            type="text"
+            list="cities"
+            formControlName="city"
+            (input)="searchCity($event)"
+            class="city-input round"
+            placeholder="City"
+          />
+          <datalist id="cities">
+            <option *ngFor="let city of cityResult" [value]="city"></option>
+          </datalist>
+        </div>
+
+         select box for property type
+        <div class="col-6 d-none d-md-block col-md-3 form-input-holder">
+          <img src="../../assets/icons/home-icon.svg" />
+          <select
+            class="city-input property-input round"
+            formControlName="type"
+          >
+            <option value="" disabled selected>Type</option>
+            <option>Home</option>
+            <option>Flat</option>
+            <option>Office</option>
+          </select>
+        </div>
+
+         search button
+        <div class="col-2 col-md-2 p-0 pr-1">
+          <button
+            type="submit"
+            class="search-button btn btn-danger"
+            [disabled]="!searchForm.valid"
+          >
+            <span>
+              <img src="../../assets/icons/search-icon.svg" />
+            </span>
+            <span class="d-none d-md-inline">Search</span>
+          </button>
+        </div>
+      </form>
+    </div>
+     search bar ends
+  </div>
+   search bar container ends
+</header> -->
+
+
+
+<header class="header">
+  <div class="p-grid" style="padding: 0 1% 0 2%">
+    <div class="p-col-2">
+    <img
+      [routerLink]="['/']"
+      src="/assets/new%20logo.png"
+      style="width: 150px !important"
+
+      height="80px"
+    />
+    </div>
+    <div *ngIf="authService.loggedIn" class="p-col-5"></div>
+    <div *ngIf="!authService.loggedIn" class="p-col-6"></div>
+    <!-- <div class="p-col-2">
+      <div>Why HashHomes ?</div>
+    </div> -->
+      <button
+        pButton
+        type="button"
+        class="p-button-secondary p-button-text p-col-1 btn"
+        style="border: 0; border-radius: 0px; margin-top:2%"
+        (click)="Buy()"
+      >Buy</button>
+
+      <button
+        pButton
+        type="button"
+        class="p-button-secondary p-button-text  p-col-1 btn"
+        style="border: 0; border-radius: 0px ;margin-top:2%"
+        (click)="Rent()"
+      >Rent</button>
+
+      <button
+      pButton
+      type="button"
+      class="p-button-secondary p-button-text  p-col-1 btn"
+      style="border: 0; border-radius: 0px ;margin-top:2%"
+      (click)="Sell()"
+    >Sell</button>
+
+
+     <button
+        *ngIf="authService.loggedIn && !authService.user?.isAdministrator"
+        style="margin-top: 2%; border: 0; border-radius: 0px;margin-left: -1%;"
+        pButton
+        type="button"
+        class="p-button-secondary p-button-text p-col-1 btn"
+        routerLink="/my-profile"
+      >Profile</button>
+
+    <button
+    *ngIf="authService.loggedIn && authService.user?.isAdministrator" style="margin-top: 2%; border: 0; border-radius: 0px; margin-left: -1%;"
+    pButton
+    type="button"
+    class="p-button-secondary p-button-text p-col-1 btn"
+    routerLink="/admin"
+     >Listings</button>
+
+
+      <button
+       *ngIf="!authService.loggedIn"
+       style="border-color: black; margin-top: 2%;border: 0; border-radius: 0px;margin-left: -1%;padding-left: 2%;"
+        [routerLink]="['/log-in']"
+        pButton
+        type="button"
+        class="p-button-secondary p-button-text p-button-raised p-col-1 button"
+      >
+        Login
+      </button>
+
+
+      <button
+       *ngIf="authService.loggedIn"
+       style="border-color: black;;border: 0; border-radius: 0px;margin-top: 2%; padding-left: 2%;margin-left: 1%;"
+       (click)="authService.logout()"
+        pButton
+        type="button"
+        class="p-button-secondary p-button-text p-button-raised p-col-1 button"
+      >
+        Logout
+      </button>
+
+    </div>
+</header>
+
+<header class="headerrespo">
+  <div class="p-grid">
+    <img
+      [routerLink]="['/']"
+      src="../../assets/new logo.png"
+      style="height: 5rem"
+      class="p-col-3"
+    />
+    <div class="p-col-7"></div>
+    <div
+      *ngIf="!authService.loggedIn"
+      class="p-col-1 btn"
+      style="border-color: black; margin-top: 3%"
+      [routerLink]="['/log-in']"
+    >
+      <button
+        pButton
+        type="button"
+        class="p-button-secondary p-button-text p-button-raised"
+        style="border: 0; border-radius: 0px"
+      >
+        Login
+      </button>
+    </div>
+    <div
+      *ngIf="authService.loggedIn"
+      class="p-col-1 btn"
+      style="border-color: black; margin-top: 3%"
+      (click)="authService.logout()"
+    >
+      <button
+        pButton
+        type="button"
+        class="p-button-secondary p-button-text p-button-raised"
+        style="border: 0; border-radius: 0px"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</header>

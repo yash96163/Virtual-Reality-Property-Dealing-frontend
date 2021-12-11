@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~primeng/resources/themes/saga-blue/theme.css";
+@import "~primeng/resources/primeng.min.css";
+@import "~ngx-toastr/toastr";
+
+.clickable {
+  cursor: pointer;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+.p-button,
+button {
+  background-color: #234e70 !important;
+  color: #fbf8be !important;
+  border-color: #234e70 !important ;
+}
+
+#toast-container > .toast-success {
+  // background-image: none;
+  background-color: #234e70;
+  color: #fbf8be;
+}

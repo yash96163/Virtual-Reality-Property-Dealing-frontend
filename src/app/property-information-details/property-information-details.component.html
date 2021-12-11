@@ -1,0 +1,183 @@
+<!-- DON'T REMOVE data-angular from html, it is for testing -->
+<!--<div *ngIf="this.authService.user?.email === getPropertyEmail()">-->
+<!--  <a-->
+<!--    type="button"-->
+<!--    class="edit-button btn btn-danger mr-2"-->
+<!--    [routerLink]="'/property/edit/' + data.propertyId"-->
+<!--  >-->
+<!--    <img class="edit-img" src="../../assets/icons/edit_black_24dp.svg"/>-->
+<!--    Edit-->
+<!--  </a>-->
+<!--  &nbsp;-->
+<!--  <button-->
+<!--    type="button"-->
+<!--    class="delete-button btn btn-danger mr-2"-->
+<!--    data-toggle="modal"-->
+<!--    data-target="#exampleModal"-->
+<!--  >-->
+<!--    <img class="edit-img" src="../../assets/icons/delete_white_24dp.svg"/>-->
+<!--    Delete-->
+<!--  </button>-->
+
+<!--  &lt;!&ndash; Modal &ndash;&gt;-->
+<!--  <div-->
+<!--    class="modal fade"-->
+<!--    id="exampleModal"-->
+<!--    tabindex="-1"-->
+<!--    role="dialog"-->
+<!--    aria-labelledby="exampleModalLabel"-->
+<!--    aria-hidden="true"-->
+<!--  >-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--      <div class="modal-content">-->
+<!--        <div class="modal-header">-->
+<!--          <h5 class="modal-title" id="exampleModalLabel">Delete Property</h5>-->
+<!--          <button-->
+<!--            type="button"-->
+<!--            class="close"-->
+<!--            data-dismiss="modal"-->
+<!--            aria-label="Close"-->
+<!--          >-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--        <div class="modal-body">-->
+<!--          Do you really want to delete this property ?-->
+<!--        </div>-->
+<!--        <div class="modal-footer">-->
+<!--          <button-->
+<!--            type="button"-->
+<!--            class="btn btn-secondary"-->
+<!--            data-dismiss="modal"-->
+<!--            #closeModel-->
+<!--          >-->
+<!--            No-->
+<!--          </button>-->
+<!--          <button-->
+<!--            type="button"-->
+<!--            class="btn btn-primary"-->
+<!--            (click)="deleteProperty()"-->
+<!--          >-->
+<!--            Yes-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="p-mt-4 p-px-3 p-grid" data-angular="address">
+  <div class="p-col-11">
+  <h2>Address</h2>
+  {{ data.address }}, {{ data.city }}, {{ data.state }}
+  {{ data.pinCode }}
+  </div>
+  <div class="p-col-1" *ngIf="getPropertyEmail() === authService.user?.email || authService.user?.isAdministrator">
+    <p-button label="Delete" (onClick)="deleteProperty()"></p-button>
+  </div>
+</div>
+
+<div class="p-mx-3">
+  <div class="p-grid p-mt-4">
+    <div class="p-col-10">
+      <div class="p-grid ">
+        <div class="p-col-3 ">
+          <p-card>
+            <img src="../../assets/icons/rupee.png" alt="" style="width: 20px">
+            <br>
+            <b>Price: </b>{{ data.price | currency: "INR" }}
+          </p-card>
+
+        </div>
+        <div class="p-col-3">
+          <p-card>
+            <img src="../../assets/icons/bed.png" alt="" style="width: 20px">
+            <br>
+            <b>Beds: </b>{{ data.bedrooms }}
+          </p-card>
+        </div>
+        <div class="p-col-3">
+          <p-card>
+            <img src="../../assets/icons/bath.png" alt="" style="width: 20px">
+            <br>
+            <b>Baths: </b>{{ data.bathrooms }}
+          </p-card>
+        </div>
+        <div class="p-col-3">
+          <p-card>
+            <img src="../../assets/icons/areasize.png" alt="" style="width: 20px">
+            <br>
+            <b>Area: </b>{{ data.area }}
+          </p-card>
+        </div>
+      </div>
+      <div class="desc">
+        <h2>Description</h2>
+        <p>{{data.description}}</p>
+      </div>
+    </div>
+    <div class="p-col-2 p-text-center">
+      <p-card header="Posted By">
+        <div class="p-mb-2">
+          <img
+            [src]=" user?.userImage || 'https://ssl.cdn-redfin.com/system_files/images/13580/150x150/gen120x120/1_49.jpg'"
+            alt="User image"
+            style="border-radius: 50%"
+            [ngClass]="{blur: !authService.loggedIn || !user}"
+          />
+        </div>
+        <div *ngIf="authService.loggedIn && user === null">
+          <p-button (onClick)="fetchOwner()">See Owner Details</p-button>
+        </div>
+        <div *ngIf="authService.loggedIn && user !== null">
+          <div>{{user.name}}</div>
+          <div>{{user.email}}</div>
+          <div>{{user.mobile}}</div>
+        </div>
+        <div *ngIf="!authService.loggedIn">
+          <p-button routerLink="/log-in">Login for Details</p-button>
+        </div>
+      </p-card>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="p-grid">
+    <div class="p-col">
+      <p-card>
+        <img src="../../assets/icons/rupee.png" alt="" style="width: 15px">
+        <br>
+        <b>Price/sq.ft</b>: {{ data.price / data.area | currency: "INR" }}
+      </p-card>
+    </div>
+    <div class="p-col">
+      <p-card>
+        <i class="pi pi-tag"></i>
+        <br>
+        <b>Purpose</b>: {{ data.purpose }}
+      </p-card>
+    </div>
+    <div class="p-col">
+      <p-card>
+        <i class="pi pi-home"></i>
+        <br>
+        <b>Type</b>: {{ data.type }}
+      </p-card>
+    </div>
+    <div class="p-col">
+      <p-card>
+        <i class="pi pi-calendar"></i>
+        <br>
+        <b>Year built</b>: {{ data.builtYear }}
+      </p-card>
+    </div>
+    <div class="p-col">
+      <p-card>
+        <img src="../../assets/icons/floor.png" alt="" width="20px">
+        <br>
+        <b>Floors</b>: {{ data.floors }}
+      </p-card>
+    </div>
+  </div>
+</div>
+<br>

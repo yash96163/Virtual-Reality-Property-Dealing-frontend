@@ -1,0 +1,43 @@
+//
+.my-profile-detail {
+  font-family: "Work Sans", sans-serif;
+  transform-style: preserve-3d;
+  border-radius: 30px;
+  padding: 0rem 5rem;
+  width: 70rem;
+  height: 20rem;
+  // padding:4%;
+  box-shadow: 0 20px 20px rgba(235, 232, 232, 0.2),
+    0px 0px 20px rgba(0, 0, 0, 0.2);
+  // background: rgb(146, 144, 150);
+  // background: linear-gradient(
+  //   0deg,
+  //   rgb(195, 194, 197) 0%,
+  //   rgb(255, 254, 255) 100%
+  // );
+  border: none;
+  margin: auto;
+  display: flex;
+}
+
+.profile-img {
+  width: 10rem;
+  height: 14rem;
+  margin-top: 2.5rem;
+  box-shadow: 0 20px 20px rgba(235, 232, 232, 0.2),
+    0px 0px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.75s ease-out;
+}
+
+.user-name {
+  font-size: 2.5rem;
+}
+
+.user-details {
+  margin-top: 3rem;
+  margin-left: 5rem;
+}
+
+.user-address {
+  font-size: 1.1rem;
+}

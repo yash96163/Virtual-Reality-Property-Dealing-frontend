@@ -1,0 +1,46 @@
+body {
+  font-family: "Work Sans", sans-serif;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  section {
+    p {
+      text-decoration: none;
+      color: #234e70;
+      font-weight: 700;
+      font-size: larger;
+      // text-decoration: underline;
+    }
+    p:hover {
+      background-color: #234e70;
+      height: 3rem;
+      padding-top: 0.6rem;
+      border-radius: 10px;
+      color: #fbf8be;
+      font-size: x-large;
+      text-align: center;
+      font-weight: 500;
+      text-decoration: none;
+      animation: normal both;
+    }
+
+    .line {
+      // position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .typing {
+      animation: typewriter 3s steps(25) 0s infinite normal both;
+    }
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}

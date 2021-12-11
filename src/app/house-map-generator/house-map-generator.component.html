@@ -1,0 +1,16 @@
+<div class="p-d-flex p-justify-center p-flex-column p-align-center my-4">
+  <div class="p-my-2">
+    <button pButton (click)="drawMode = !drawMode">Switch to {{drawMode ? "Erase" : "Draw"}}</button>
+    <button pButton label="View in VR" (click)="emitVrData()" class="p-ml-1"></button>
+  </div>
+  <canvas
+    #canvas
+    [height]="getHeight()"
+    [width]="getWidth()"
+    (mousemove)="handleMouseMove($event)"
+    (mousedown)="handleMouseDown($event)"
+    (mouseup)="handleMouseUp($event)"
+    (mouseleave)="handleMouseUp($event)"
+  >
+  </canvas>
+</div>
